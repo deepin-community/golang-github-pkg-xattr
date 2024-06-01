@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@
+	dh $@ --buildsystem=golang --with=golang
+
+# Disable the tests for now.
+# The filesystem used to build the package may not support extended
+# attributes. Disabling the tests until upstream adds a check to
+# conditionally run the tests.
+override_dh_auto_test:
